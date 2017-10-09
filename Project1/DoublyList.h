@@ -44,6 +44,15 @@ public:
 	
 	void reversePrint() const;
 
+	// Overloaded insertion operator
+	ostream& operator<<(ostream& out) const;
+
+	// Copy constructor
+	DoublyList(const DoublyList& other);
+
+	// Overloaded Assignment operator
+	DoublyList& operator=(const DoublyList& rightSide);
+
 	void destroyList();
 	~DoublyList();
 
