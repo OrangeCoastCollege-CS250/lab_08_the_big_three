@@ -28,6 +28,8 @@ private:
 
 class DoublyList
 {
+	// Overloaded insertion operator
+	friend ostream& operator<<(ostream& out, const DoublyList& d);
 public:
 	DoublyList(); 
 
@@ -43,9 +45,6 @@ public:
 	Node& getLastNodeAddress() const;
 	
 	void reversePrint() const;
-
-	// Overloaded insertion operator
-	ostream& operator<<(ostream& out) const;
 
 	// Copy constructor
 	DoublyList(const DoublyList& other);
