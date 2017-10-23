@@ -1,5 +1,10 @@
 /*
-	Name header
+	Badajoz, Severiano
+
+	October 22, 2017
+	CS A250
+
+	Lab 08
 */
 
 /*
@@ -8,27 +13,28 @@
 	1) Why are the parameter lists in the testCopyConstructor and 
 	   testOverloadedAssignment functions passed by VALUE and not reference?
 	   
-	   Answer:
+	   Answer: The values of the parameters do not need to be changed outside of the function, and the
+		design of the tests rely on a non-changing list
 
 
 	2) When the function testOverloadedAssignment is called, why is being 
 	   re-directed to the copy constructor? 
 
-	   Answer:
+	   Answer: Because the object has not been initialized yet, so it needs to use the constructor to initialize
 
 
 	3) When the function testOverloadedAssignment is called, why is the list on
 	   the right of the assignment operator being checked before the list 
 	   on the left?
 
-	   Answer:
+	   Answer:  Because the compiler reads from right to left. So the program must do the same
 
 
 	4) The first testing case for the overloaded assignment operator compares 
 	   a list to itself (line 6). Shouldn't an error message be displayed? 
 	   Why is it not displaying?
 
-	   Answer:
+	   Answer:  Because the assignment operator is used before the comparisons, this changes the address of the nodes.
 
 
 */
@@ -57,7 +63,7 @@ ostream& operator<<(ostream& out, const DoublyList& d) {
 DoublyList::DoublyList(const DoublyList& other) {
 	first = nullptr;
 	last = nullptr;
-	count = other.count;
+	count = 0;
 	Node * curr = other.first;
 	while(curr != nullptr) {
 		insertBack(curr->getData());
@@ -72,7 +78,7 @@ DoublyList& DoublyList::operator=(const DoublyList& rightSide) {
 		Node * rightCurr = rightSide.first;
 		Node * curr = first;
 		if (count == 0) {
-			while (curr != nullptr) {
+			while (rightCurr != nullptr) {
 				insertBack(rightCurr->getData());
 				rightCurr = rightCurr->getNext();
 			}
